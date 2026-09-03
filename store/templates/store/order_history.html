@@ -1,0 +1,86 @@
+{% extends 'store/base.html' %}
+
+{% block title %}My Orders - E-Commerce Store{% endblock %}
+
+{% block content %}
+
+<h1 class="mb-4">📦 My Orders</h1>
+
+{% if orders %}
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover bg-white shadow-sm">
+
+        <thead class="table-dark">
+            <tr>
+                <th>Order ID</th>
+                <th>Date</th>
+                <th>Total Amount</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for order in orders %}
+
+            <tr>
+                <td>
+                    <strong>#{{ order.id }}</strong>
+                </td>
+
+                <td>
+                    {{ order.created_at|date:"d M Y, h:i A" }}
+                </td>
+
+                <td>
+                    ₹{{ order.total_amount }}
+                </td>
+
+                <td>
+                    {% if order.status == 'Delivered' %}
+                        <span class="badge bg-success">
+                            {{ order.status }}
+                        </span>
+                    {% elif order.status == 'Cancelled' %}
+                        <span class="badge bg-danger">
+                            {{ order.status }}
+                        </span>
+                    {% elif order.status == 'Shipped' %}
+                        <span class="badge bg-info">
+                            {{ order.status }}
+                        </span>
+                    {% else %}
+                        <span class="badge bg-warning text-dark">
+                            {{ order.status }}
+                        </span>
+                    {% endif %}
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+</div>
+
+{% else %}
+
+<div class="text-center py-5">
+
+    <h3>No orders yet 📦</h3>
+
+    <p class="text-muted">
+        You haven't placed any orders yet.
+    </p>
+
+    <a href="{% url 'home' %}" class="btn btn-dark">
+        Start Shopping
+    </a>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

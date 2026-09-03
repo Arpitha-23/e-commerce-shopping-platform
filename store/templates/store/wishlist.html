@@ -1,0 +1,92 @@
+{% extends 'store/base.html' %}
+
+{% block title %}My Wishlist - E-Commerce Store{% endblock %}
+
+{% block content %}
+
+<h1 class="mb-4">❤️ My Wishlist</h1>
+
+{% if wishlist_items %}
+
+<div class="row">
+
+    {% for item in wishlist_items %}
+
+    <div class="col-md-4 mb-4">
+
+        <div class="card h-100 shadow-sm">
+
+            {% if item.product.image %}
+                <img
+                    src="{{ item.product.image.url }}"
+                    class="card-img-top product-image"
+                    alt="{{ item.product.name }}"
+                >
+            {% else %}
+                <div
+                    class="bg-light d-flex align-items-center justify-content-center"
+                    style="height: 220px;"
+                >
+                    <span class="text-muted">
+                        No Image Available
+                    </span>
+                </div>
+            {% endif %}
+
+            <div class="card-body">
+
+                <h5 class="card-title">
+                    {{ item.product.name }}
+                </h5>
+
+                <p class="text-muted">
+                    {{ item.product.category.name }}
+                </p>
+
+                <h5 class="text-success">
+                    ₹{{ item.product.price }}
+                </h5>
+
+                <a
+                    href="{% url 'product_detail' item.product.id %}"
+                    class="btn btn-dark"
+                >
+                    View Product
+                </a>
+
+                <a
+                    href="{% url 'remove_from_wishlist' item.product.id %}"
+                    class="btn btn-outline-danger"
+                >
+                    Remove
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="text-center py-5">
+
+    <h3>Your wishlist is empty ❤️</h3>
+
+    <p class="text-muted">
+        Save products you love and find them here later.
+    </p>
+
+    <a href="{% url 'home' %}" class="btn btn-dark">
+        Browse Products
+    </a>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

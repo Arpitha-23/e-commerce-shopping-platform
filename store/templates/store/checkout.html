@@ -1,0 +1,341 @@
+{% extends 'store/base.html' %}
+
+{% block title %}Checkout - E-Commerce Store{% endblock %}
+
+{% block content %}
+
+<div class="container py-4">
+
+    <h1 class="mb-4">🛒 Checkout</h1>
+
+    <div class="row">
+
+        <!-- Customer Details -->
+        <div class="col-md-7">
+
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-header">
+                    <h5 class="mb-0">Delivery Details</h5>
+                </div>
+
+                <div class="card-body">
+
+                    <form id="checkout-form">
+
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input type="text"
+                                   name="full_name"
+                                   class="form-control"
+                                   required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email"
+                                   name="email"
+                                   class="form-control"
+                                   required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Phone</label>
+                            <input type="text"
+                                   name="phone"
+                                   class="form-control"
+                                   maxlength="15"
+                                   required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Address</label>
+                            <textarea name="address"
+                                      class="form-control"
+                                      rows="3"
+                                      required></textarea>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">City</label>
+                                <input type="text"
+                                       name="city"
+                                       class="form-control"
+                                       required>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">State</label>
+                                <input type="text"
+                                       name="state"
+                                       class="form-control"
+                                       required>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Pincode</label>
+                                <input type="text"
+                                       name="pincode"
+                                       class="form-control"
+                                       maxlength="10"
+                                       required>
+                            </div>
+
+                        </div>
+
+                        <button type="button"
+                                id="pay-button"
+                                class="btn btn-dark btn-lg w-100">
+                            💳 Pay ₹{{ total }}
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Order Summary -->
+        <div class="col-md-5">
+
+            <div class="card shadow-sm">
+
+                <div class="card-header">
+                    <h5 class="mb-0">Order Summary</h5>
+                </div>
+
+                <div class="card-body">
+
+                    {% for item in cart_items %}
+
+                    <div class="d-flex justify-content-between mb-3">
+
+                        <div>
+                            <strong>{{ item.product.name }}</strong>
+
+                            <br>
+
+                            <small class="text-muted">
+                                Quantity: {{ item.quantity }}
+                            </small>
+                        </div>
+
+                        <span>
+                            ₹{{ item.subtotal }}
+                        </span>
+
+                    </div>
+
+                    {% endfor %}
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between">
+
+                        <strong>Total</strong>
+
+                        <strong class="text-success">
+                            ₹{{ total }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Razorpay Checkout -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+
+document.getElementById("pay-button").addEventListener("click", function () {
+
+    const form = document.getElementById("checkout-form");
+
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
+
+    const button = document.getElementById("pay-button");
+
+    button.disabled = true;
+    button.innerText = "Creating Payment...";
+
+    fetch("{% url 'create_razorpay_order' %}", {
+
+        method: "GET",
+
+        headers: {
+            "X-Requested-With": "XMLHttpRequest"
+        }
+
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        if (data.error) {
+
+            alert(data.error);
+
+            button.disabled = false;
+            button.innerText = "💳 Pay ₹{{ total }}";
+
+            return;
+        }
+
+        const options = {
+
+            key: data.key_id,
+
+            amount: data.amount,
+
+            currency: data.currency,
+
+            name: "E-Commerce Store",
+
+            description: "Order Payment",
+
+            order_id: data.order_id,
+
+            handler: function (response) {
+
+    button.innerText = "Verifying Payment...";
+
+    const formData = new FormData(form);
+
+    formData.append(
+        "razorpay_payment_id",
+        response.razorpay_payment_id
+    );
+
+    formData.append(
+        "razorpay_order_id",
+        response.razorpay_order_id
+    );
+
+    formData.append(
+        "razorpay_signature",
+        response.razorpay_signature
+    );
+
+    fetch("{% url 'verify_razorpay_payment' %}", {
+
+        method: "POST",
+
+        headers: {
+            "X-Requested-With": "XMLHttpRequest"
+        },
+
+        body: formData
+
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        if (data.error) {
+
+            alert(data.error);
+
+            button.disabled = false;
+            button.innerText = "💳 Pay ₹{{ total }}";
+
+            return;
+        }
+
+        if (data.success) {
+
+            window.location.href =
+                "{% url 'order_success' 0 %}"
+                .replace("0", data.order_id);
+
+        }
+
+    })
+
+    .catch(error => {
+
+        console.error(error);
+
+        alert(
+            "Payment was successful, but order verification failed. Please contact support."
+        );
+
+        button.disabled = false;
+        button.innerText = "💳 Pay ₹{{ total }}";
+
+    });
+
+},
+
+            prefill: {
+
+                name: form.full_name.value,
+
+                email: form.email.value,
+
+                contact: form.phone.value
+
+            },
+
+            theme: {
+
+                color: "#212529"
+
+            }
+
+        };
+
+        const razorpay = new Razorpay(options);
+
+        razorpay.on("payment.failed", function (response) {
+
+            alert(
+                "Payment failed.\n"
+                + response.error.description
+            );
+
+            button.disabled = false;
+            button.innerText = "💳 Pay ₹{{ total }}";
+
+        });
+
+        razorpay.open();
+
+    })
+
+    .catch(error => {
+
+        console.error(error);
+
+        alert("Something went wrong while creating the payment.");
+
+        button.disabled = false;
+        button.innerText = "💳 Pay ₹{{ total }}";
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

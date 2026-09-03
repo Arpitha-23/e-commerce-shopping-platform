@@ -1,0 +1,51 @@
+{% extends 'store/base.html' %}
+
+{% block title %}Order Successful - E-Commerce Store{% endblock %}
+
+{% block content %}
+
+<div class="text-center py-5">
+
+    <div class="card shadow-sm">
+
+        <div class="card-body py-5">
+
+            <h1 class="text-success">
+                ✅ Order Placed Successfully!
+            </h1>
+
+            <p class="lead mt-3">
+                Thank you for shopping with us.
+            </p>
+
+            <h4 class="mt-4">
+                Order #{{ order.id }}
+            </h4>
+
+            <p class="text-muted">
+                Your order has been received and is currently
+                <strong>{{ order.status }}</strong>.
+            </p>
+
+            <h3 class="text-success">
+                ₹{{ order.total_amount }}
+            </h3>
+
+            <div class="mt-4">
+
+                <a
+                    href="{% url 'home' %}"
+                    class="btn btn-dark"
+                >
+                    Continue Shopping
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

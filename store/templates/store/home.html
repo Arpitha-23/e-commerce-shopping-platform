@@ -1,0 +1,133 @@
+{% extends 'store/base.html' %}
+
+{% block title %}Home - E-Commerce Store{% endblock %}
+
+{% block content %}
+
+<div class="hero text-center mb-5">
+    <h1>Welcome to Our E-Commerce Store 🛒</h1>
+    <p class="lead">
+        Find quality products at affordable prices.
+    </p>
+    <a href="#products" class="btn btn-light btn-lg">
+        Shop Now
+    </a>
+</div>
+
+<h2 id="products" class="mb-4">Featured Products</h2>
+<!-- Search and Filter -->
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <form method="GET" action="{% url 'home' %}">
+            <div class="row g-3">
+
+                <div class="col-md-6">
+                    <input
+                        type="text"
+                        name="search"
+                        class="form-control"
+                        placeholder="Search products..."
+                        value="{{ search }}"
+                    >
+                </div>
+
+                <div class="col-md-4">
+                    <select name="category" class="form-select">
+                        <option value="">All Categories</option>
+
+                        {% for category in categories %}
+                            <option
+                                value="{{ category.id }}"
+                                {% if selected_category == category.id|stringformat:"s" %}
+                                    selected
+                                {% endif %}
+                            >
+                                {{ category.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-dark w-100">
+                        🔍 Search
+                    </button>
+                </div>
+
+            </div>
+
+            {% if search or selected_category %}
+                <div class="mt-3">
+                    <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-sm">
+                        Clear Filters
+                    </a>
+                </div>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+<div class="row">
+
+    {% for product in products %}
+
+    <div class="col-md-4 mb-4">
+
+        <div class="card product-card h-100 shadow-sm">
+
+            {% if product.image %}
+                <img
+                    src="{{ product.image.url }}"
+                    class="card-img-top product-image"
+                    alt="{{ product.name }}"
+                >
+            {% else %}
+                <div class="product-image d-flex align-items-center justify-content-center bg-light">
+                    <span class="text-muted">No Image Available</span>
+                </div>
+            {% endif %}
+
+            <div class="card-body">
+
+                <h5 class="card-title">
+                    {{ product.name }}
+                </h5>
+
+                <p class="card-text text-muted">
+                    {{ product.description|truncatewords:15 }}
+                </p>
+
+                <h5 class="text-success">
+                    ₹{{ product.price }}
+                </h5>
+
+                <p>
+                    <strong>Stock:</strong> {{ product.stock }}
+                </p>
+
+                <a
+                    href="{% url 'product_detail' product.id %}"
+                    class="btn btn-dark w-100"
+                >
+                    View Product
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% empty %}
+
+    <div class="col-12 text-center">
+        <p class="text-muted">
+            No products available.
+        </p>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
