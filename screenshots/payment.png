@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)http://127.0.0.1:8000/cart/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shopping Cart - E-Commerce Store</title>
+
+    <link href="./payment_files/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+        }
+
+        .hero {
+            padding: 70px 20px;
+            background: #212529;
+            color: white;
+            border-radius: 15px;
+        }
+
+        .product-card {
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            height: 220px;
+            object-fit: cover;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 25px;
+            background: #212529;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="http://127.0.0.1:8000/">
+            🛒 E-Commerce Store
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav ms-auto">
+
+                <!-- Home -->
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/">
+                        Home
+                    </a>
+                </li>
+
+                <!-- Products -->
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/#products">
+                        Products
+                    </a>
+                </li>
+
+                <!-- Cart -->
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/cart/">
+                        🛒 Cart
+                    </a>
+                </li>
+
+
+                
+
+                    <!-- My Orders -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/orders/">
+                            📦 My Orders
+                        </a>
+                    </li>
+                    
+                    <!-- Wishlist -->
+                    <li class="nav-item">
+                          <a class="nav-link" href="http://127.0.0.1:8000/wishlist/">
+                           ❤️ Wishlist
+                         </a>
+                    </li>
+
+                    <!-- Username -->
+                    <li class="nav-item">
+                        <span class="nav-link">
+                            👤 customer1
+                        </span>
+                    </li>
+
+                    <!-- Logout -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/logout/">
+                            Logout
+                        </a>
+                    </li>
+
+                
+
+
+                <!-- Admin -->
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/admin/">
+                        Admin
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<main class="container py-4">
+
+    
+
+<h1 class="mb-4">🛒 Shopping Cart</h1>
+
+
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover bg-white">
+        <thead class="table-dark">
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            
+            <tr>
+                <td>
+                    <strong>Smart Watch</strong>
+                </td>
+
+                <td>
+                    ₹2999.00
+                </td>
+
+                <td>
+                    1
+                </td>
+
+                <td>
+                    ₹2999.00
+                </td>
+
+                <td>
+                    <a href="http://127.0.0.1:8000/cart/remove/2/" class="btn btn-danger btn-sm">
+                        Remove
+                    </a>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+
+<div class="text-end mt-4">
+    <h3>
+        Total:
+        <span class="text-success">₹2999.00</span>
+    </h3>
+
+    <a href="http://127.0.0.1:8000/" class="btn btn-outline-dark">
+        ← Continue Shopping
+    </a>
+
+    <a href="http://127.0.0.1:8000/checkout/" class="btn btn-success">
+    Proceed to Checkout
+</a>
+</div>
+
+
+
+
+
+</main>
+
+
+<footer class="text-center">
+
+    <p class="mb-0">
+        © 2026 E-Commerce Store | Django Full Stack Project
+    </p>
+
+</footer>
+
+
+<script src="./payment_files/bootstrap.bundle.min.js.download">
+</script>
+
+
+</body></html>

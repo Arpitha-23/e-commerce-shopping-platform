@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://127.0.0.1:8000/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Home - E-Commerce Store</title>
+
+    <link href="./home_files/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+        }
+
+        .hero {
+            padding: 70px 20px;
+            background: #212529;
+            color: white;
+            border-radius: 15px;
+        }
+
+        .product-card {
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            height: 220px;
+            object-fit: cover;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 25px;
+            background: #212529;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="http://127.0.0.1:8000/">
+            🛒 E-Commerce Store
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav ms-auto">
+
+                <!-- Home -->
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/">
+                        Home
+                    </a>
+                </li>
+
+                <!-- Products -->
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/#products">
+                        Products
+                    </a>
+                </li>
+
+                <!-- Cart -->
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/cart/">
+                        🛒 Cart
+                    </a>
+                </li>
+
+
+                
+
+                    <!-- My Orders -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/orders/">
+                            📦 My Orders
+                        </a>
+                    </li>
+                    
+                    <!-- Wishlist -->
+                    <li class="nav-item">
+                          <a class="nav-link" href="http://127.0.0.1:8000/wishlist/">
+                           ❤️ Wishlist
+                         </a>
+                    </li>
+
+                    <!-- Username -->
+                    <li class="nav-item">
+                        <span class="nav-link">
+                            👤 customer1
+                        </span>
+                    </li>
+
+                    <!-- Logout -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/logout/">
+                            Logout
+                        </a>
+                    </li>
+
+                
+
+
+                <!-- Admin -->
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/admin/">
+                        Admin
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<main class="container py-4">
+
+    
+
+<div class="hero text-center mb-5">
+    <h1>Welcome to Our E-Commerce Store 🛒</h1>
+    <p class="lead">
+        Find quality products at affordable prices.
+    </p>
+    <a href="http://127.0.0.1:8000/#products" class="btn btn-light btn-lg">
+        Shop Now
+    </a>
+</div>
+
+<h2 id="products" class="mb-4">Featured Products</h2>
+<!-- Search and Filter -->
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <form method="GET" action="http://127.0.0.1:8000/">
+            <div class="row g-3">
+
+                <div class="col-md-6">
+                    <input type="text" name="search" class="form-control" placeholder="Search products..." value="">
+                </div>
+
+                <div class="col-md-4">
+                    <select name="category" class="form-select">
+                        <option value="">All Categories</option>
+
+                        
+                            <option value="1">
+                                Electronics
+                            </option>
+                        
+                            <option value="2">
+                                Clothing
+                            </option>
+                        
+                            <option value="3">
+                                Books
+                            </option>
+                        
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-dark w-100">
+                        🔍 Search
+                    </button>
+                </div>
+
+            </div>
+
+            
+        </form>
+    </div>
+</div>
+
+<div class="row">
+
+    
+
+    <div class="col-md-4 mb-4">
+
+        <div class="card product-card h-100 shadow-sm">
+
+            
+                <img src="./home_files/web-book_4LWX7Cv.jpg" class="card-img-top product-image" alt="Web Deveploment Book">
+            
+
+            <div class="card-body">
+
+                <h5 class="card-title">
+                    Web Deveploment Book
+                </h5>
+
+                <p class="card-text text-muted">
+                    High-quality product suitable for everyday use.
+                </p>
+
+                <h5 class="text-success">
+                    ₹699.00
+                </h5>
+
+                <p>
+                    <strong>Stock:</strong> 17
+                </p>
+
+                <a href="http://127.0.0.1:8000/product/6/" class="btn btn-dark w-100">
+                    View Product
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <div class="col-md-4 mb-4">
+
+        <div class="card product-card h-100 shadow-sm">
+
+            
+                <img src="./home_files/python-book_yvXMefx.jpg" class="card-img-top product-image" alt="Python  Programming Book">
+            
+
+            <div class="card-body">
+
+                <h5 class="card-title">
+                    Python  Programming Book
+                </h5>
+
+                <p class="card-text text-muted">
+                    High-quality product suitable for everyday use.
+                </p>
+
+                <h5 class="text-success">
+                    ₹599.00
+                </h5>
+
+                <p>
+                    <strong>Stock:</strong> 24
+                </p>
+
+                <a href="http://127.0.0.1:8000/product/5/" class="btn btn-dark w-100">
+                    View Product
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <div class="col-md-4 mb-4">
+
+        <div class="card product-card h-100 shadow-sm">
+
+            
+                <img src="./home_files/jeans_9oEqAsn.jpg" class="card-img-top product-image" alt="Jeans">
+            
+
+            <div class="card-body">
+
+                <h5 class="card-title">
+                    Jeans
+                </h5>
+
+                <p class="card-text text-muted">
+                    High-quality product suitable for everyday use.
+                </p>
+
+                <h5 class="text-success">
+                    ₹1499.00
+                </h5>
+
+                <p>
+                    <strong>Stock:</strong> 20
+                </p>
+
+                <a href="http://127.0.0.1:8000/product/4/" class="btn btn-dark w-100">
+                    View Product
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <div class="col-md-4 mb-4">
+
+        <div class="card product-card h-100 shadow-sm">
+
+            
+                <img src="./home_files/tshirt_LrzrUzQ.jpg" class="card-img-top product-image" alt="T-Shirt">
+            
+
+            <div class="card-body">
+
+                <h5 class="card-title">
+                    T-Shirt
+                </h5>
+
+                <p class="card-text text-muted">
+                    High-quality product suitable for everyday use.
+                </p>
+
+                <h5 class="text-success">
+                    ₹799.00
+                </h5>
+
+                <p>
+                    <strong>Stock:</strong> 30
+                </p>
+
+                <a href="http://127.0.0.1:8000/product/3/" class="btn btn-dark w-100">
+                    View Product
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <div class="col-md-4 mb-4">
+
+        <div class="card product-card h-100 shadow-sm">
+
+            
+                <img src="./home_files/smartwatch_k6NWqqa.jpg" class="card-img-top product-image" alt="Smart Watch">
+            
+
+            <div class="card-body">
+
+                <h5 class="card-title">
+                    Smart Watch
+                </h5>
+
+                <p class="card-text text-muted">
+                    High-quality product suitable for everyday use.
+                </p>
+
+                <h5 class="text-success">
+                    ₹2999.00
+                </h5>
+
+                <p>
+                    <strong>Stock:</strong> 15
+                </p>
+
+                <a href="http://127.0.0.1:8000/product/2/" class="btn btn-dark w-100">
+                    View Product
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <div class="col-md-4 mb-4">
+
+        <div class="card product-card h-100 shadow-sm">
+
+            
+                <img src="./home_files/headphones_gGO17Xf.jpg" class="card-img-top product-image" alt="Wireless Headphones">
+            
+
+            <div class="card-body">
+
+                <h5 class="card-title">
+                    Wireless Headphones
+                </h5>
+
+                <p class="card-text text-muted">
+                    High-quality product suitable for everyday use.
+                </p>
+
+                <h5 class="text-success">
+                    ₹1999.00
+                </h5>
+
+                <p>
+                    <strong>Stock:</strong> 19
+                </p>
+
+                <a href="http://127.0.0.1:8000/product/1/" class="btn btn-dark w-100">
+                    View Product
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+</div>
+
+
+
+</main>
+
+
+<footer class="text-center">
+
+    <p class="mb-0">
+        © 2026 E-Commerce Store | Django Full Stack Project
+    </p>
+
+</footer>
+
+
+<script src="./home_files/bootstrap.bundle.min.js.download">
+</script>
+
+
+</body></html>

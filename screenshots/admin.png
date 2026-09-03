@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)http://127.0.0.1:8000/admin/ -->
+<html lang="en-us" dir="ltr" data-theme="auto"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Site administration | Django site admin</title>
+<link rel="stylesheet" href="./admin_files/base.css">
+
+  <link rel="stylesheet" href="./admin_files/dark_mode.css">
+  <script src="./admin_files/theme.js.download"></script>
+
+
+  <link rel="stylesheet" href="./admin_files/nav_sidebar.css">
+  <script src="./admin_files/nav_sidebar.js.download" defer=""></script>
+
+<link rel="stylesheet" href="./admin_files/dashboard.css">
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./admin_files/responsive.css">
+    
+
+<meta name="robots" content="NONE,NOARCHIVE">
+</head>
+
+<body class=" dashboard" data-admin-utc-offset="0">
+<a href="http://127.0.0.1:8000/admin/#content-start" class="skip-to-content-link">Skip to main content</a>
+<!-- Container -->
+<div id="container">
+
+    
+    <!-- Header -->
+    
+      <header id="header">
+        <div id="branding">
+        
+<div id="site-name"><a href="http://127.0.0.1:8000/admin/">Django administration</a></div>
+
+
+        </div>
+        
+        
+        <div id="user-tools">
+            
+                Welcome,
+                <strong>admin</strong>.
+            
+            
+                
+                    <a href="http://127.0.0.1:8000/">View site</a> /
+                
+                
+                    
+                    
+                
+                
+                <a href="http://127.0.0.1:8000/admin/password_change/">Change password</a> /
+                
+                <form id="logout-form" method="post" action="http://127.0.0.1:8000/admin/logout/">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="FAjQamRxVTp0HlGxKDKuSEkmhg11W2vYeBbbK2BSZrJljCWiw5TbJ5AS3keO0Zqa">
+                    <button type="submit">Log out</button>
+                </form>
+                
+<button class="theme-toggle">
+  <span class="visually-hidden theme-label-when-auto">Toggle theme (current theme: auto)</span>
+  <span class="visually-hidden theme-label-when-light">Toggle theme (current theme: light)</span>
+  <span class="visually-hidden theme-label-when-dark">Toggle theme (current theme: dark)</span>
+  <svg aria-hidden="true" class="theme-icon-when-auto">
+    <use xlink:href="#icon-auto"></use>
+  </svg>
+  <svg aria-hidden="true" class="theme-icon-when-dark">
+    <use xlink:href="#icon-moon"></use>
+  </svg>
+  <svg aria-hidden="true" class="theme-icon-when-light">
+    <use xlink:href="#icon-sun"></use>
+  </svg>
+</button>
+
+            
+        </div>
+        
+        
+        
+      </header>
+    
+    <!-- END Header -->
+    
+    
+
+    <div class="main" id="main">
+      
+        
+      
+      <main id="content-start" class="content" tabindex="-1">
+        
+          
+        
+        <!-- Content -->
+        <div id="content" class="colMS">
+          
+          <h1>Site administration</h1>
+          
+          
+<div id="content-main">
+  
+
+
+  
+    <div class="app-auth module">
+      <table>
+        <caption>
+          <a href="http://127.0.0.1:8000/admin/auth/" class="section" title="Models in the Authentication and Authorization application">Authentication and Authorization</a>
+        </caption>
+        <thead class="visually-hidden">
+          <tr>
+            <th scope="col">Model name</th>
+            <th scope="col">Add link</th>
+            <th scope="col">Change or view list link</th>
+          </tr>
+        </thead>
+        
+          
+            <tbody><tr class="model-group">
+              <th scope="row" id="auth-group">
+                
+                  <a href="http://127.0.0.1:8000/admin/auth/group/">Groups</a>
+                
+              </th>
+
+              
+                <td><a href="http://127.0.0.1:8000/admin/auth/group/add/" class="addlink" aria-describedby="auth-group">Add</a></td>
+              
+
+              
+                
+                  <td><a href="http://127.0.0.1:8000/admin/auth/group/" class="changelink" aria-describedby="auth-group">Change</a></td>
+                
+              
+            </tr>
+          
+        
+          
+            <tr class="model-user">
+              <th scope="row" id="auth-user">
+                
+                  <a href="http://127.0.0.1:8000/admin/auth/user/">Users</a>
+                
+              </th>
+
+              
+                <td><a href="http://127.0.0.1:8000/admin/auth/user/add/" class="addlink" aria-describedby="auth-user">Add</a></td>
+              
+
+              
+                
+                  <td><a href="http://127.0.0.1:8000/admin/auth/user/" class="changelink" aria-describedby="auth-user">Change</a></td>
+                
+              
+            </tr>
+          
+        
+      </tbody></table>
+    </div>
+  
+    <div class="app-store module">
+      <table>
+        <caption>
+          <a href="http://127.0.0.1:8000/admin/store/" class="section" title="Models in the Store application">Store</a>
+        </caption>
+        <thead class="visually-hidden">
+          <tr>
+            <th scope="col">Model name</th>
+            <th scope="col">Add link</th>
+            <th scope="col">Change or view list link</th>
+          </tr>
+        </thead>
+        
+          
+            <tbody><tr class="model-category">
+              <th scope="row" id="store-category">
+                
+                  <a href="http://127.0.0.1:8000/admin/store/category/">Categorys</a>
+                
+              </th>
+
+              
+                <td><a href="http://127.0.0.1:8000/admin/store/category/add/" class="addlink" aria-describedby="store-category">Add</a></td>
+              
+
+              
+                
+                  <td><a href="http://127.0.0.1:8000/admin/store/category/" class="changelink" aria-describedby="store-category">Change</a></td>
+                
+              
+            </tr>
+          
+        
+          
+            <tr class="model-orderitem">
+              <th scope="row" id="store-orderitem">
+                
+                  <a href="http://127.0.0.1:8000/admin/store/orderitem/">Order items</a>
+                
+              </th>
+
+              
+                <td><a href="http://127.0.0.1:8000/admin/store/orderitem/add/" class="addlink" aria-describedby="store-orderitem">Add</a></td>
+              
+
+              
+                
+                  <td><a href="http://127.0.0.1:8000/admin/store/orderitem/" class="changelink" aria-describedby="store-orderitem">Change</a></td>
+                
+              
+            </tr>
+          
+        
+          
+            <tr class="model-order">
+              <th scope="row" id="store-order">
+                
+                  <a href="http://127.0.0.1:8000/admin/store/order/">Orders</a>
+                
+              </th>
+
+              
+                <td><a href="http://127.0.0.1:8000/admin/store/order/add/" class="addlink" aria-describedby="store-order">Add</a></td>
+              
+
+              
+                
+                  <td><a href="http://127.0.0.1:8000/admin/store/order/" class="changelink" aria-describedby="store-order">Change</a></td>
+                
+              
+            </tr>
+          
+        
+          
+            <tr class="model-product">
+              <th scope="row" id="store-product">
+                
+                  <a href="http://127.0.0.1:8000/admin/store/product/">Products</a>
+                
+              </th>
+
+              
+                <td><a href="http://127.0.0.1:8000/admin/store/product/add/" class="addlink" aria-describedby="store-product">Add</a></td>
+              
+
+              
+                
+                  <td><a href="http://127.0.0.1:8000/admin/store/product/" class="changelink" aria-describedby="store-product">Change</a></td>
+                
+              
+            </tr>
+          
+        
+          
+            <tr class="model-wishlist">
+              <th scope="row" id="store-wishlist">
+                
+                  <a href="http://127.0.0.1:8000/admin/store/wishlist/">Wishlists</a>
+                
+              </th>
+
+              
+                <td><a href="http://127.0.0.1:8000/admin/store/wishlist/add/" class="addlink" aria-describedby="store-wishlist">Add</a></td>
+              
+
+              
+                
+                  <td><a href="http://127.0.0.1:8000/admin/store/wishlist/" class="changelink" aria-describedby="store-wishlist">Change</a></td>
+                
+              
+            </tr>
+          
+        
+      </tbody></table>
+    </div>
+  
+
+
+</div>
+
+          
+<div id="content-related">
+    <div class="module" id="recent-actions-module">
+        <h2>Recent actions</h2>
+        <h3>My actions</h3>
+            
+            
+            
+            <ul class="actionlist">
+            
+            <li class="changelink">
+                <span class="visually-hidden">Changed:</span>
+                
+                    <a href="http://127.0.0.1:8000/admin/store/product/6/change/">Web Deveploment Book</a>
+                
+                <br>
+                
+                    <span class="mini quiet">Product</span>
+                
+            </li>
+            
+            <li class="changelink">
+                <span class="visually-hidden">Changed:</span>
+                
+                    <a href="http://127.0.0.1:8000/admin/store/product/5/change/">Python  Programming Book</a>
+                
+                <br>
+                
+                    <span class="mini quiet">Product</span>
+                
+            </li>
+            
+            <li class="changelink">
+                <span class="visually-hidden">Changed:</span>
+                
+                    <a href="http://127.0.0.1:8000/admin/store/product/4/change/">Jeans</a>
+                
+                <br>
+                
+                    <span class="mini quiet">Product</span>
+                
+            </li>
+            
+            <li class="changelink">
+                <span class="visually-hidden">Changed:</span>
+                
+                    <a href="http://127.0.0.1:8000/admin/store/product/3/change/">T-Shirt</a>
+                
+                <br>
+                
+                    <span class="mini quiet">Product</span>
+                
+            </li>
+            
+            <li class="changelink">
+                <span class="visually-hidden">Changed:</span>
+                
+                    <a href="http://127.0.0.1:8000/admin/store/product/2/change/">Smart Watch</a>
+                
+                <br>
+                
+                    <span class="mini quiet">Product</span>
+                
+            </li>
+            
+            <li class="changelink">
+                <span class="visually-hidden">Changed:</span>
+                
+                    <a href="http://127.0.0.1:8000/admin/store/product/1/change/">Wireless Headphones</a>
+                
+                <br>
+                
+                    <span class="mini quiet">Product</span>
+                
+            </li>
+            
+            <li class="addlink">
+                <span class="visually-hidden">Added:</span>
+                
+                    <a href="http://127.0.0.1:8000/admin/store/product/6/change/">Web Deveploment Book</a>
+                
+                <br>
+                
+                    <span class="mini quiet">Product</span>
+                
+            </li>
+            
+            <li class="addlink">
+                <span class="visually-hidden">Added:</span>
+                
+                    <a href="http://127.0.0.1:8000/admin/store/product/5/change/">Python  Programming Book</a>
+                
+                <br>
+                
+                    <span class="mini quiet">Product</span>
+                
+            </li>
+            
+            <li class="addlink">
+                <span class="visually-hidden">Added:</span>
+                
+                    <a href="http://127.0.0.1:8000/admin/store/product/4/change/">Jeans</a>
+                
+                <br>
+                
+                    <span class="mini quiet">Product</span>
+                
+            </li>
+            
+            <li class="addlink">
+                <span class="visually-hidden">Added:</span>
+                
+                    <a href="http://127.0.0.1:8000/admin/store/product/3/change/">T-Shirt</a>
+                
+                <br>
+                
+                    <span class="mini quiet">Product</span>
+                
+            </li>
+            
+            </ul>
+            
+    </div>
+</div>
+
+          <br class="clear">
+        </div>
+        <!-- END Content -->
+      </main>
+    </div>
+    <footer id="footer"></footer>
+</div>
+<!-- END Container -->
+
+<!-- SVGs -->
+<svg xmlns="http://www.w3.org/2000/svg" class="base-svgs">
+  <symbol viewBox="0 0 24 24" width="1.5rem" height="1.5rem" id="icon-auto"><path d="M0 0h24v24H0z" fill="currentColor"></path><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2V4a8 8 0 1 0 0 16z"></path></symbol>
+  <symbol viewBox="0 0 24 24" width="1.5rem" height="1.5rem" id="icon-moon"><path d="M0 0h24v24H0z" fill="currentColor"></path><path d="M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z"></path></symbol>
+  <symbol viewBox="0 0 24 24" width="1.5rem" height="1.5rem" id="icon-sun"><path d="M0 0h24v24H0z" fill="currentColor"></path><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"></path></symbol>
+</svg>
+<!-- END SVGs -->
+
+
+
+</body></html>
