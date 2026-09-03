@@ -1,16 +1,16 @@
 # 🛒 E-Commerce Shopping Platform
 
-A full-stack E-Commerce Shopping Platform built using **Python, Django, MySQL, HTML, CSS, Bootstrap, JavaScript, and Razorpay**.
+A full-stack E-Commerce Shopping Platform developed using **Python, Django, MySQL, HTML, CSS, Bootstrap, JavaScript, and Razorpay**.
 
-This project was developed as part of the **Free Python Full Stack Internship – E-Commerce Shopping Platform (PY-EC-001)**.
+This project was developed as part of the **Free Python Full Stack Internship** provided by Data Alcott Systems.
 
 ---
 
 ## 📌 Project Overview
 
-The E-Commerce Shopping Platform is a web-based online shopping application that allows users to browse products, search and filter products, add products to a shopping cart, manage a wishlist, complete checkout, make online payments using Razorpay, and view their order history.
+The E-Commerce Shopping Platform is a web-based online shopping application that allows users to browse products, search and filter products, add products to their shopping cart, manage a wishlist, complete checkout, make online payments using Razorpay Test Mode, and view their order history.
 
-The application also provides a Django Admin Panel for managing products, categories, orders, order items, wishlist records, and product inventory.
+The project also includes a Django Admin Panel for managing products, categories, orders, order items, wishlist records, and product stock.
 
 ---
 
@@ -19,19 +19,20 @@ The application also provides a Django Admin Panel for managing products, catego
 ### 👤 User Authentication
 
 - User registration
-- User login and logout
+- User login
+- User logout
 - Authentication-protected checkout
 - User-specific order history
 - User-specific wishlist
 
 ### 🛍️ Product Catalogue
 
-- View available products
+- View all available products
 - Product details page
 - Product categories
 - Product images
 - Product descriptions
-- Product pricing
+- Product prices
 - Product stock information
 
 ### 🔍 Search & Filtering
@@ -61,17 +62,18 @@ The application also provides a Django Admin Panel for managing products, catego
 - Razorpay Test Mode integration
 - Razorpay order creation
 - Payment signature verification
-- Payment status verification
+- Payment capture verification
 - Payment amount verification
-- Secure server-side payment validation
+- Server-side payment validation
 - Order creation after successful payment
 
 ### 📦 Order Management
 
 - Create orders after successful payment
 - View order history
-- Order status management
+- Store delivery details
 - Store payment details
+- Order status management
 - Automatic stock reduction after successful payment
 
 ### ⚙️ Django Admin Panel
@@ -90,7 +92,7 @@ The application also provides a Django Admin Panel for managing products, catego
 
 ### Backend
 
-- Python
+- Python 3
 - Django 5.2
 - Django ORM
 
@@ -118,6 +120,36 @@ The application also provides a Django Admin Panel for managing products, catego
 
 ---
 
+## 🏗️ Application Architecture
+
+```text
+User
+  │
+  ▼
+Frontend
+HTML + CSS + Bootstrap + JavaScript
+  │
+  ▼
+Django Application
+  │
+  ├── Authentication
+  ├── Product Catalogue
+  ├── Search & Filtering
+  ├── Shopping Cart
+  ├── Wishlist
+  ├── Checkout
+  ├── Order Management
+  └── Razorpay Payment
+  │
+  ▼
+Django ORM
+  │
+  ▼
+MySQL Database
+```
+
+---
+
 ## 📁 Project Structure
 
 ```text
@@ -132,12 +164,6 @@ e-commerce/
 │
 ├── store/
 │   ├── migrations/
-│   │   ├── 0001_initial.py
-│   │   ├── 0002_order_orderitem.py
-│   │   ├── 0003_wishlist.py
-│   │   ├── 0004_order_payment_status_order_razorpay_order_id_and_more.py
-│   │   └── __init__.py
-│   │
 │   ├── templates/
 │   │   └── store/
 │   │       ├── base.html
@@ -159,28 +185,35 @@ e-commerce/
 │   └── tests.py
 │
 ├── screenshots/
+│   ├── admin.png
 │   ├── home.png
-│   ├── product.png
-│   ├── cart.png
-│   ├── payment.png
+│   ├── logout.png
 │   ├── orders.png
-│   ├── wishlist.png
-│   └── admin.png
+│   ├── payment.png
+│   ├── products.png
+│   └── wishlist.png
 │
 ├── manage.py
 ├── .gitignore
-└── README.md
+├── README.md
+└── requirements.txt
 ```
 
 ---
 
 ## 🗄️ Database Models
 
-The application uses the following main Django models:
+The application uses the following main Django models.
 
 ### Category
 
-Stores product categories such as Electronics, Clothing, and Books.
+Stores product categories.
+
+Examples:
+
+- Electronics
+- Clothing
+- Books
 
 ### Product
 
@@ -199,8 +232,14 @@ Stores:
 Stores:
 
 - Customer
-- Delivery details
-- Order total
+- Full name
+- Email
+- Phone
+- Address
+- City
+- State
+- Pincode
+- Total amount
 - Order status
 - Razorpay order ID
 - Razorpay payment ID
@@ -227,9 +266,30 @@ Stores:
 
 ---
 
+## 🗃️ Sample Products
+
+The project contains sample products in multiple categories.
+
+### 📱 Electronics
+
+- Wireless Headphones
+- Smart Watch
+
+### 👕 Clothing
+
+- T-Shirt
+- Jeans
+
+### 📚 Books
+
+- Python Programming Book
+- Web Development Book
+
+---
+
 ## 🔐 Environment Variables
 
-Razorpay credentials are stored securely using environment variables.
+Razorpay credentials are stored using environment variables.
 
 Create a `.env` file in the project root:
 
@@ -238,27 +298,27 @@ RAZORPAY_KEY_ID=your_razorpay_test_key_id
 RAZORPAY_KEY_SECRET=your_razorpay_test_key_secret
 ```
 
-**Important:** Never upload `.env` to GitHub.
+**Important:** Never upload the `.env` file to GitHub.
 
-The `.gitignore` file excludes the `.env` file from version control.
+The `.gitignore` file excludes sensitive environment variables from version control.
 
 ---
 
 ## 🗄️ MySQL Database Setup
 
-Create the database using MySQL:
+Create the database in MySQL:
 
 ```sql
 CREATE DATABASE ecommerce_db;
 ```
 
-Configure the database credentials in:
+Configure the database in:
 
 ```text
 ecommerce/settings.py
 ```
 
-Example:
+Example configuration:
 
 ```python
 DATABASES = {
@@ -273,6 +333,8 @@ DATABASES = {
 }
 ```
 
+Replace `your_mysql_password` with your local MySQL password.
+
 ---
 
 ## 🚀 Installation & Setup
@@ -283,7 +345,7 @@ DATABASES = {
 git clone https://github.com/Arpitha-23/e-commerce-shopping-platform.git
 ```
 
-Move into the project directory:
+Navigate to the project:
 
 ```bash
 cd e-commerce-shopping-platform
@@ -301,7 +363,7 @@ python -m venv venv
 
 ### 3. Activate the Virtual Environment
 
-#### Windows PowerShell
+For Windows PowerShell:
 
 ```powershell
 venv\Scripts\Activate.ps1
@@ -309,18 +371,26 @@ venv\Scripts\Activate.ps1
 
 ---
 
-### 4. Install Required Packages
+### 4. Install Dependencies
 
 ```bash
-pip install django
-pip install mysqlclient
-pip install razorpay
-pip install python-dotenv
+pip install -r requirements.txt
 ```
 
 ---
 
-### 5. Create MySQL Database
+### 5. Configure Environment Variables
+
+Create a `.env` file:
+
+```env
+RAZORPAY_KEY_ID=your_razorpay_test_key_id
+RAZORPAY_KEY_SECRET=your_razorpay_test_key_secret
+```
+
+---
+
+### 6. Create MySQL Database
 
 Open MySQL and run:
 
@@ -330,7 +400,7 @@ CREATE DATABASE ecommerce_db;
 
 ---
 
-### 6. Run Django Migrations
+### 7. Run Django Migrations
 
 ```bash
 python manage.py makemigrations
@@ -339,29 +409,33 @@ python manage.py migrate
 
 ---
 
-### 7. Create a Superuser
+### 8. Create Django Superuser
 
 ```bash
 python manage.py createsuperuser
 ```
 
-Enter the required username, email, and password.
+Enter your:
+
+- Username
+- Email
+- Password
 
 ---
 
-### 8. Run the Development Server
+### 9. Run the Development Server
 
 ```bash
 python manage.py runserver
 ```
 
-Open the application in your browser:
+Open the application:
 
 ```text
 http://127.0.0.1:8000/
 ```
 
-Django Admin Panel:
+Django Admin:
 
 ```text
 http://127.0.0.1:8000/admin/
@@ -371,43 +445,81 @@ http://127.0.0.1:8000/admin/
 
 ## 💳 Razorpay Test Mode
 
-This project uses **Razorpay Test Mode** for payment testing.
+The project uses **Razorpay Test Mode** for payment testing.
 
-No real money is charged during Test Mode transactions.
+Test Mode transactions do not charge real money.
 
-### Example Domestic Test Card
+Example test card used during development:
 
 ```text
 Card Number: 4386 2894 0766 0153
 Expiry Date: Any future date
 CVV: Any 3 digits
-OTP: Any valid 4–10 digit test OTP
+OTP: Test OTP
 ```
 
-Use Razorpay's official Test Mode documentation for the latest test payment details.
+Use Razorpay's official documentation for the latest available test credentials and payment details.
 
 ---
 
-## 🔒 Payment Verification
+## 🔒 Payment Verification Flow
 
-The application performs server-side payment verification before creating an order.
+The payment process works as follows:
 
-The verification process checks:
+```text
+User adds products to cart
+          │
+          ▼
+      Checkout
+          │
+          ▼
+Create Razorpay Order
+          │
+          ▼
+Razorpay Payment
+          │
+          ▼
+Payment Successful
+          │
+          ▼
+Verify Razorpay Signature
+          │
+          ▼
+Verify Payment Status
+          │
+          ▼
+Verify Payment Amount
+          │
+          ▼
+Verify Product Stock
+          │
+          ▼
+Create Order
+          │
+          ▼
+Create Order Items
+          │
+          ▼
+Reduce Product Stock
+          │
+          ▼
+Clear Shopping Cart
+```
 
-1. Razorpay payment signature
-2. Payment capture status
-3. Payment amount
-4. Cart amount
-5. Product stock availability
+---
 
-After successful verification:
+## 🛡️ Payment Security
 
-- The order is created
-- Order items are stored
-- Payment status is marked as **Paid**
-- Order status is marked as **Confirmed**
-- Product stock is reduced
-- Shopping cart is cleared
+Before creating an order, the backend validates:
+
+1. Razorpay order ID
+2. Razorpay payment signature
+3. Payment capture status
+4. Payment amount
+5. Cart amount
+6. Product stock availability
+
+Only after successful validation is the order stored in the database.
 
 ---
 
@@ -419,25 +531,19 @@ After successful verification:
 
 ---
 
-### 📦 Product Details
+### 🛍️ Products Page
 
-![Product Details](screenshots/product.png)
-
----
-
-### 🛒 Shopping Cart
-
-![Shopping Cart](screenshots/cart.png)
+![Products Page](screenshots/products.png)
 
 ---
 
 ### 💳 Payment
 
-![Razorpay Payment](screenshots/payment.png)
+![Payment](screenshots/payment.png)
 
 ---
 
-### 📋 Order History
+### 📦 Order History
 
 ![Order History](screenshots/orders.png)
 
@@ -455,17 +561,24 @@ After successful verification:
 
 ---
 
+### 🚪 Logout
+
+![Logout](screenshots/logout.png)
+
+---
+
 ## 🧪 Testing
 
-The following major features were tested successfully:
+The major features of the application were tested during development.
 
 | Feature | Status |
 |---|---|
 | User Registration | ✅ Working |
 | User Login | ✅ Working |
+| User Logout | ✅ Working |
 | Product Catalogue | ✅ Working |
 | Product Details | ✅ Working |
-| Search | ✅ Working |
+| Product Search | ✅ Working |
 | Category Filtering | ✅ Working |
 | Shopping Cart | ✅ Working |
 | Checkout | ✅ Working |
@@ -479,69 +592,131 @@ The following major features were tested successfully:
 
 ---
 
-## 📊 Sample Products
+## 📦 Order & Inventory Management
 
-The application contains sample products across multiple categories.
+When a payment is successfully completed:
 
-### Electronics
+- A new order is created.
+- Order items are stored.
+- Payment information is recorded.
+- Payment status becomes `Paid`.
+- Order status becomes `Confirmed`.
+- Purchased quantity is deducted from product stock.
+- The user's shopping cart is cleared.
 
-- Wireless Headphones
-- Smart Watch
-
-### Clothing
-
-- T-Shirt
-- Jeans
-
-### Books
-
-- Python Programming Book
-- Web Development Book
+This prevents users from purchasing quantities greater than the available stock.
 
 ---
 
-## 🎯 Internship Task Details
+## 👨‍💼 Django Admin Panel
 
-**Internship:** Free Python Full Stack Internship
+The Django Admin Panel allows the administrator to manage:
 
-**Task:** E-Commerce Shopping Platform
+```text
+Categories
+Products
+Orders
+Order Items
+Wishlist
+```
 
-**Task ID:** PY-EC-001
+The administrator can also:
 
-**Student Code:** DAS-EC-001
+- Add products
+- Edit products
+- Update prices
+- Update stock
+- Manage order status
+- Search orders
+- Filter products
+- View customer order information
 
-**Technology:** Python / Django / MySQL
+---
+
+## 🔍 Search and Category Filtering
+
+Users can search for products using the search bar.
+
+Example:
+
+```text
+Search: Wireless
+```
+
+Users can also filter products using categories:
+
+```text
+All Categories
+Electronics
+Clothing
+Books
+```
+
+The search and category filters can also be used together.
+
+---
+
+## ❤️ Wishlist Workflow
+
+```text
+User Login
+    │
+    ▼
+Open Product
+    │
+    ▼
+Add to Wishlist
+    │
+    ▼
+Wishlist Saved
+    │
+    ▼
+View Wishlist
+    │
+    ▼
+Remove from Wishlist
+```
+
+Each user has their own wishlist.
+
+Duplicate wishlist entries are prevented.
 
 ---
 
 ## 🎓 Learning Outcomes
 
-This project provided practical experience with:
+Through this project, I gained practical experience in:
 
-- Django project development
-- Django application architecture
+- Python programming
+- Django web development
+- Django project structure
 - Django models
 - Django ORM
 - MySQL database integration
 - User authentication
 - Session management
 - CRUD operations
+- Product catalogue development
 - Shopping cart implementation
-- Product inventory management
-- Search and filtering
 - Wishlist functionality
+- Search and filtering
+- Inventory management
+- Order management
 - Payment gateway integration
-- Payment verification
+- Razorpay payment verification
 - Django Admin customization
-- HTML and Bootstrap UI development
+- Bootstrap UI development
 - JavaScript integration
-- Git and GitHub version control
+- Git and GitHub
+- Environment variable management
 
 ---
 
 ## 🔒 Security Notes
 
-The following sensitive files and folders are excluded from GitHub:
+Sensitive and unnecessary files are excluded from the GitHub repository.
+
+The `.gitignore` includes:
 
 ```text
 .env
@@ -552,7 +727,109 @@ __pycache__/
 .vscode/
 ```
 
-Razorpay API credentials should always be stored in environment variables and should never be committed to a public repository.
+Never commit:
+
+- Razorpay secret keys
+- Database passwords
+- API keys
+- `.env` files
+
+---
+
+## 📋 Internship Task Details
+
+**Internship:** Free Python Full Stack Internship
+
+**Company:** Data Alcott Systems
+
+**Project:** E-Commerce Shopping Platform
+
+**Task ID:** PY-EC-001
+
+**Student Code:** DAS-EC-001
+
+**Technology:** Python / Django / MySQL
+
+**Internship Type:** Online / Self-Paced
+
+**Duration:** 7 Days
+
+### Task Link
+
+https://www.freeinternships.in/python-full-stack-internship/free-python-full-stack-internship-online-ecommerce-shopping-platform-py-ec-001.php
+
+---
+
+## 📹 Project Demonstration
+
+A project demonstration video will showcase:
+
+- User registration and login
+- Product browsing
+- Product search
+- Category filtering
+- Shopping cart
+- Wishlist
+- Checkout
+- Razorpay Test Mode payment
+- Order creation
+- Order history
+- Django Admin Panel
+
+YouTube Demo:
+
+```text
+Add your YouTube video link here after uploading the project demonstration.
+```
+
+---
+
+## 🌐 Live Demo
+
+Live deployed application:
+
+```text
+Add your deployed website link here after deployment.
+```
+
+---
+
+## 📝 Project Report
+
+A separate project report will contain:
+
+- Project introduction
+- Problem statement
+- Objectives
+- Technologies used
+- System architecture
+- Database design
+- Features
+- Implementation
+- Payment integration
+- Testing
+- Screenshots
+- Results
+- Conclusion
+
+---
+
+## 📊 Future Enhancements
+
+The project can be further enhanced with:
+
+- Product quantity controls directly inside the cart
+- Advanced product filtering
+- Product reviews and ratings
+- Coupon and discount system
+- Email order confirmation
+- User profile management
+- Address management
+- Product recommendations
+- Pagination
+- REST API integration
+- Deployment using a cloud platform
+- Improved responsive design
 
 ---
 
